@@ -1,0 +1,262 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>tgraph</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">tgraph</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> tgraph</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#tgraph" id="tgraph" style="color: inherit; text-decoration: none;">
+					<h1>tgraph</h1>
+				</a>
+				<img src="ressources/tgraphLogo.png" width="150">
+				<a href="#a-typescript-library-for-drawing-3d-graphs" id="a-typescript-library-for-drawing-3d-graphs" style="color: inherit; text-decoration: none;">
+					<h2>A typescript library for drawing 3D graphs</h2>
+				</a>
+				<p><a href="https://www.npmjs.com/package/tgraph"><img src="https://img.shields.io/npm/v/tgraph.svg" alt="NPM version"></a>
+					<a href="https://www.npmjs.com/package/tgraph"><img src="https://img.shields.io/npm/dt/tgraph.svg" alt="NPM downloads"></a>
+					<a href="https://travis-ci.org/intv0id/tgraph"><img src="https://travis-ci.org/intv0id/tgraph.svg?branch=master" alt="Build Status"></a>
+				<a href="https://www.codefactor.io/repository/github/intv0id/tgraph"><img src="https://www.codefactor.io/repository/github/intv0id/tgraph/badge" alt="CodeFactor"></a></p>
+				<p>This module aims at drawing an interactive and modular representation of information networks.</p>
+				<p>For python jupyter notebooks use, please refer to <a href="https://github.com/intv0id/pytgraph">pytgraph</a>.</p>
+				<p><strong>Example</strong></p>
+				<p><a href="https://intv0id.github.io/tgraph/examples/github.html"><img src="examples/images/GithubFollowersGraph.png" alt="Example graph screenshot"></a></p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h1>Usage</h1>
+				</a>
+				<p>Examples are provided <a href="https://github.com/intv0id/tgraph/tree/master/examples">here</a>.</p>
+				<a href="#minimal-code" id="minimal-code" style="color: inherit; text-decoration: none;">
+					<h2>Minimal code</h2>
+				</a>
+				<ul>
+					<li>Javascript</li>
+				</ul>
+				<pre><code class="language-js">
+<span class="hljs-keyword">var</span> jsonFileName = ... ;
+
+<span class="hljs-built_in">require</span>.config({
+    <span class="hljs-attr">paths</span>: {
+        <span class="hljs-string">"jquery"</span>: <span class="hljs-string">"https://code.jquery.com/jquery-3.4.1.min"</span>,
+        <span class="hljs-string">"tgraph"</span>: <span class="hljs-string">"https://unpkg.com/tgraph/dist/tgraph.bundle"</span>,
+    }
+});
+
+<span class="hljs-built_in">require</span>([<span class="hljs-string">"jquery"</span>, <span class="hljs-string">"tgraph"</span>], <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">jquery, tgraph</span>) </span>{
+    jquery.getJSON(jsonFileName, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">jsonGraph</span>) </span>{
+        <span class="hljs-keyword">let</span> graph = <span class="hljs-keyword">new</span> tgraph.Graph();
+        graph.deserialize(jsonGraph);
+        <span class="hljs-keyword">let</span> graphView = <span class="hljs-keyword">new</span> tgraph.GraphView(<span class="hljs-string">'.graph'</span>, <span class="hljs-keyword">new</span> tgraph.GraphOptions());
+        graphView.draw(graph);
+    });
+});</code></pre>
+				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
+					<h3>Options</h3>
+				</a>
+				<p>Check the <code>GraphOptions</code> class documentation for more details.</p>
+				<a href="#graph-format-json" id="graph-format-json" style="color: inherit; text-decoration: none;">
+					<h2>Graph format (JSON)</h2>
+				</a>
+				<pre><code class="language-js">{
+  <span class="hljs-string">"nodes"</span>: [
+    {...},
+    ...
+  ],
+  <span class="hljs-string">"edges"</span>: [
+    {...},
+    ...
+  ]
+}</code></pre>
+				<a href="#node-attributes" id="node-attributes" style="color: inherit; text-decoration: none;">
+					<h3>Node attributes</h3>
+				</a>
+				<ul>
+					<li>name</li>
+					<li>label (optional)</li>
+					<li>url (optional) -&gt; onclick default behavior</li>
+					<li>color (optional, hexadecimal string)</li>
+					<li>hoverColor (optional, hexadecimal string)</li>
+					<li>size (optional)</li>
+				</ul>
+				<a href="#edge-attributes" id="edge-attributes" style="color: inherit; text-decoration: none;">
+					<h3>Edge attributes</h3>
+				</a>
+				<ul>
+					<li>src</li>
+					<li>dst</li>
+					<li>label (optional)</li>
+					<li>color (optional, hexadecimal string)</li>
+					<li>size (optional)</li>
+				</ul>
+				<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
+					<h1>Contribute</h1>
+				</a>
+				<p>Feel free to get involved in this project and submit your pull requests. If you find any bug please feel free to <a href="https://github.com/intv0id/tgraph/issues/new">create a ticket</a>.</p>
+				<a href="#roadmap" id="roadmap" style="color: inherit; text-decoration: none;">
+					<h2>Roadmap</h2>
+				</a>
+				<ul>
+					<li><input disabled="" type="checkbox"> Documentation</li>
+					<li><input disabled="" type="checkbox"> Unit tests</li>
+				</ul>
+				<a href="#credits" id="credits" style="color: inherit; text-decoration: none;">
+					<h1>Credits</h1>
+				</a>
+				<p>This module is based on the <a href="https://github.com/patrickfuller/jgraph">jgraph</a> work and is under the MIT License.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_graphtypes_.html">"graph<wbr>Types"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_optimizer_.html">"optimizer"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_tgraph_.html">"tgraph"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_.html">"utils"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
