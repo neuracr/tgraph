@@ -16,7 +16,7 @@ For python jupyter notebooks use, please refer to [pytgraph](https://github.com/
 
 **Example**
 
-[![Example graph screenshot](examples/images/GithubFollowersGraph.png)](https://intv0id.github.io/tgraph/examples/github.html)
+[![Example graph screenshot](examples/images/GithubFollowersGraph.png)](https://intv0id.github.io/tgraph/examples/json/github.html)
 
 # Usage
 
